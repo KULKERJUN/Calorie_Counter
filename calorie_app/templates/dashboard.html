@@ -1,0 +1,45 @@
+{% extends 'master/base.html' %} 
+{% block title %} 
+{{title}} 
+{% endblock title%} 
+{% block block1 %}
+<div class="container">
+  <h1>Welcome to your Dashboard</h1>
+  <div class="row">
+    
+    <div class="col-md-4">
+        <div class="card">
+        <div class="card-header">
+            Required Calorie
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{bmr}} kcal</h5>
+        </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+        <div class="card-header">
+            Consumed Calorie
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{total_consume_calorie}} kcal</h5>
+        </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+        <div class="card-header">
+            Less/More Calorie
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{less_or_more}} kcal</h5>
+        </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+{% endblock block1 %}

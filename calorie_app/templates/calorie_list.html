@@ -1,0 +1,63 @@
+{% extends 'master/base.html' %} 
+{% block title %} 
+{{title}} 
+{% endblock title%} 
+{% block block1 %}
+<div class="container">
+  <h1>Calorie Consumed List</h1>
+  <a href="{% url 'add_consumed_calorie_view' %}" class="btn btn-primary"
+    >Add Calorie</a>
+
+{% comment %} for Search {% endcomment %}
+  <form method="GET" class="mt-4">
+    <div class="row g-6 align-items-center">
+        <div class="col-auto">
+        <input
+            type="text"
+            name="search_value"
+            placeholder="Search..."
+            id="inputPassword6"
+            class="form-control"
+            aria-describedby="passwordHelpInline"
+        />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a href="{% url 'calorie_consumed_list_view' %}" class="btn btn-danger">X</a>
+        </div>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>SL</th>
+        <th>Item</th>
+        <th>Calorie</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in consumed_calorie %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.item_name}}</td>
+        <td>{{data.consumed_calorie}}</td>
+        <td>
+          <a
+            href="{% url 'edit_consumed_calorie_view' data.id %}"
+            class="btn btn-primary"
+            >Edit</a
+          >
+          <a
+            href="{% url 'delete_consumed_calorie_view' data.id %}"
+            class="btn btn-danger"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock block1 %}
